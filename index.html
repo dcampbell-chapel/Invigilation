@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chapel School • Invigilator Training Hub</title>
+  <meta name="description" content="A single hub for Chapel School invigilator training resources: slides, video, and condensed report." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --surface:#0f1a2e;
+      --card:#111f38;
+      --text:#eaf0ff;
+      --muted:#b8c4e6;
+      --muted2:#92a3d6;
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --accent:#2f7dd1;
+      --accent2:#59b0ff;
+      --warn:#fbbf24;
+      --ok:#34d399;
+      --focus: 0 0 0 4px rgba(89,176,255,.25);
+      --radius: 18px;
+      --max: 1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 500px at 20% 0%, rgba(89,176,255,.18), transparent 55%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(47,125,209,.16), transparent 55%),
+                  linear-gradient(180deg, var(--bg), #070b14 60%, #060a12);
+      color:var(--text);
+    }
+    a{color:inherit}
+    a:focus{outline:none; box-shadow:var(--focus); border-radius:10px}
+    button:focus, input:focus{outline:none; box-shadow:var(--focus)}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 44px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(11,18,32,.72);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar .wrap{padding:16px 18px}
+    .brand{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(89,176,255,.25), rgba(47,125,209,.25));
+      border:1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+    }
+    .logo svg{opacity:.95}
+    .brand h1{font-size:18px; margin:0; letter-spacing:.2px;}
+    .brand p{margin:2px 0 0; color:var(--muted); font-size:13px;}
+    .row{display:flex; gap:14px; align-items:center; justify-content:space-between}
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .btn{
+      appearance:none; border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      transition:.15s transform, .15s background, .15s border;
+      display:inline-flex; align-items:center; gap:10px;
+      font-weight:650; letter-spacing:.1px; font-size:13.5px;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(47,125,209,.92), rgba(89,176,255,.92));
+      border-color: rgba(89,176,255,.35);
+      color:#06101f;
+    }
+    .btn.primary:hover{background: linear-gradient(135deg, rgba(47,125,209,1), rgba(89,176,255,1))}
+    .btn.small{padding:8px 10px; border-radius:10px; font-size:13px; font-weight:650}
+    .kbd{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:3px 7px;
+      border:1px solid var(--border);
+      border-bottom-color: rgba(255,255,255,.18);
+      border-radius:8px;
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+    }
+    .hero{padding:24px 0 10px}
+    .hero h2{margin:0 0 8px; font-size:28px; letter-spacing:.1px;}
+    .hero p{margin:0; color:var(--muted); max-width:78ch; line-height:1.5}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      margin-top:18px;
+    }
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      background: linear-gradient(180deg, rgba(17,31,56,.92), rgba(15,26,46,.92));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding:16px 16px 10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+    }
+    .card .hd h3{margin:0; font-size:16px; letter-spacing:.2px}
+    .card .hd .sub{margin-top:3px; color:var(--muted); font-size:13px; line-height:1.4}
+    .card .bd{padding:16px}
+
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:12.5px;
+      white-space:nowrap;
+    }
+    .tag.ok{border-color: rgba(52,211,153,.32); background: rgba(52,211,153,.08)}
+    .tag.info{border-color: rgba(89,176,255,.30); background: rgba(89,176,255,.08)}
+    .tag.warn{border-color: rgba(251,191,36,.32); background: rgba(251,191,36,.08)}
+    .tag .dot{width:9px; height:9px; border-radius:999px; background: rgba(255,255,255,.35);}
+    .tag.ok .dot{background: var(--ok)}
+    .tag.info .dot{background: var(--accent2)}
+    .tag.warn .dot{background: var(--warn)}
+
+    .navbox{position:sticky; top:86px;}
+    @media (max-width:920px){ .navbox{position:relative; top:auto} }
+
+    .nav{display:flex; flex-direction:column; gap:10px;}
+    .nav a{
+      text-decoration:none;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      display:flex; align-items:center; justify-content:space-between;
+      transition:.15s transform, .15s background, .15s border;
+    }
+    .nav a:hover{transform: translateY(-1px); background: rgba(255,255,255,.075); border-color: rgba(255,255,255,.18)}
+    .nav .label{display:flex; flex-direction:column; gap:3px}
+    .nav .label strong{font-size:13.5px; letter-spacing:.2px}
+    .nav .label span{font-size:12.5px; color:var(--muted)}
+    .nav .right{display:flex; gap:8px; align-items:center}
+    .arrow{opacity:.75}
+    .mini{font-size:12px; color:var(--muted); font-family:var(--mono)}
+
+    .search{display:flex; gap:10px; align-items:center; margin-top:12px;}
+    input[type="search"]{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      color:var(--text);
+      font-size:13.5px;
+    }
+    input[type="search"]::placeholder{color: rgba(184,196,230,.72)}
+    .hint{margin-top:10px; color:var(--muted2); font-size:12.5px; line-height:1.4}
+
+    .embed{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      overflow:hidden;
+    }
+    .embed iframe{width:100%; height:540px; border:0; background:#0b1220;}
+    video{width:100%; max-height:540px; background:#000; display:block;}
+
+    .tools{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:12px;}
+    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.5; font-size:13.5px;}
+    .foot{
+      margin-top:18px;
+      padding:14px 16px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted2);
+      font-size:12.5px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .sr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand" aria-label="Chapel School Invigilator Training Hub">
+          <div class="logo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M19 7.2c-1.5-2-3.9-3.2-6.6-3.2C7.9 4 4.3 7.6 4.3 12s3.6 8 8.1 8c2.7 0 5.1-1.2 6.6-3.2"
+                stroke="rgba(234,240,255,.9)" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h1>Chapel School • Invigilator Training Hub</h1>
+            <p>Slide Deck (PDF) • Training Video • Condensed Report</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <span class="pill" title="Keyboard shortcuts">
+            <span class="kbd">/</span> Search • <span class="kbd">1</span><span class="kbd">2</span><span class="kbd">3</span> Jump
+          </span>
+          <button class="btn primary" type="button" onclick="window.print()" title="Print this page">Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <h2>Everything teachers need, in one place</h2>
+      <p>
+        Use this hub during invigilator training to quickly access the core resources:
+        the slide deck (PDF), the training video, and the condensed report page. Each resource is separated
+        into its own section with quick navigation and search.
+      </p>
+    </section>
+
+    <div class="grid">
+      <div>
+        <!-- SETTINGS -->
+        <section class="card" id="settings">
+          <div class="hd">
+            <div>
+              <h3>Quick setup checklist</h3>
+              <div class="sub">Place these files in the same GitHub Pages folder as this <span style="font-family:var(--mono)">index.html</span>.</div>
+            </div>
+            <span class="tag info"><span class="dot"></span> GitHub Pages</span>
+          </div>
+          <div class="bd">
+            <ul class="list">
+              <li><strong>Slide deck (PDF):</strong> <span style="font-family:var(--mono)">IB_Examination_Invigilation_Protocols.pdf</span> :contentReference[oaicite:3]{index=3}</li>
+              <li><strong>Video:</strong> <span style="font-family:var(--mono)">IB_Exam_Invigilation.mp4</span></li>
+              <li><strong>Condensed report:</strong> <span style="font-family:var(--mono)">Invigilation.html</span> :contentReference[oaicite:4]{index=4}</li>
+            </ul>
+
+            <div class="tools">
+              <button class="btn" type="button" id="btnCopyLinks" title="Copy direct URLs to clipboard">Copy resource links</button>
+              <span class="pill">Tip: filenames must match exactly (capitalization + spaces).</span>
+            </div>
+          </div>
+          <div class="foot">
+            <span>Static site: no logins, no tracking. Designed for quick navigation during training.</span>
+            <span class="mini">Last updated: <span id="updatedStamp"></span></span>
+          </div>
+        </section>
+
+        <!-- SLIDES (PDF) -->
+        <section class="card" id="slides" style="margin-top:16px;">
+          <div class="hd">
+            <div>
+              <h3>1) Slide deck (PDF)</h3>
+              <div class="sub">Embedded deck for whole-group facilitation. Use “Open” if the preview doesn’t load in your browser.</div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+              <span class="tag info"><span class="dot"></span> Slides</span>
+              <a class="btn small" id="slidesOpen" href="#" target="_blank" rel="noopener">Open in new tab</a>
+              <a class="btn small" id="slidesDownload" href="#" download>Download</a>
+            </div>
+          </div>
+          <div class="bd">
+            <div class="embed" id="slidesEmbed">
+              <iframe id="slidesFrame" src="" title="Invigilation Protocols Slide Deck (PDF)"></iframe>
+            </div>
+            <div class="hint" style="margin-top:10px;">
+              File: <span style="font-family:var(--mono)">IB_Examination_Invigilation_Protocols.pdf</span> :contentReference[oaicite:5]{index=5}
+            </div>
+          </div>
+        </section>
+
+        <!-- VIDEO -->
+        <section class="card" id="video" style="margin-top:16px;">
+          <div class="hd">
+            <div>
+              <h3>2) Training video</h3>
+              <div class="sub">Play this during the session or assign it as a refresher.</div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+              <span class="tag ok"><span class="dot"></span> MP4</span>
+              <a class="btn small" id="videoOpen" href="#" target="_blank" rel="noopener">Open in new tab</a>
+            </div>
+          </div>
+          <div class="bd">
+            <div class="embed">
+              <video id="trainingVideo" controls preload="metadata">
+                <source id="videoSource" src="" type="video/mp4" />
+                Sorry — your browser can’t play this video. Use “Open in new tab” above.
+              </video>
+            </div>
+            <div class="hint" style="margin-top:10px;">
+              If the video doesn’t load on GitHub Pages, confirm the file is committed (not only present locally).
+            </div>
+          </div>
+        </section>
+
+        <!-- CONDENSED REPORT -->
+        <section class="card" id="report" style="margin-top:16px;">
+          <div class="hd">
+            <div>
+              <h3>3) Condensed report page</h3>
+              <div class="sub">A readable, quick-reference HTML page for procedures and reminders.</div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+              <span class="tag warn"><span class="dot"></span> HTML</span>
+              <a class="btn small" id="reportOpen" href="#" target="_blank" rel="noopener">Open in new tab</a>
+            </div>
+          </div>
+          <div class="bd">
+            <div class="embed">
+              <iframe id="reportFrame" src="" title="Condensed Invigilation Report"></iframe>
+            </div>
+            <div class="hint" style="margin-top:10px;">
+              This embeds your existing <span style="font-family:var(--mono)">Invigilation.html</span> page. :contentReference[oaicite:6]{index=6}
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px;">
+          <div class="bd" style="display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+            <p style="margin:0; color:var(--muted); line-height:1.55; font-size:13.5px;">
+              Suggested flow in training: <strong>Slides → Video → Condensed Report</strong>.
+            </p>
+            <button class="btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column: navigation + search -->
+      <aside class="navbox">
+        <section class="card">
+          <div class="hd">
+            <div>
+              <h3>Navigate</h3>
+              <div class="sub">Jump to a resource section.</div>
+            </div>
+            <span class="tag"><span class="dot"></span> Menu</span>
+          </div>
+          <div class="bd">
+            <nav class="nav" aria-label="Resource navigation">
+              <a href="#slides" data-key="1">
+                <span class="label"><strong>Slides (PDF)</strong><span>Embedded deck</span></span>
+                <span class="right"><span class="mini">1</span><span class="arrow">→</span></span>
+              </a>
+              <a href="#video" data-key="2">
+                <span class="label"><strong>Video</strong><span>Play in-page</span></span>
+                <span class="right"><span class="mini">2</span><span class="arrow">→</span></span>
+              </a>
+              <a href="#report" data-key="3">
+                <span class="label"><strong>Condensed report</strong><span>Embedded HTML</span></span>
+                <span class="right"><span class="mini">3</span><span class="arrow">→</span></span>
+              </a>
+            </nav>
+
+            <div class="search" role="search" aria-label="Search resources">
+              <label class="sr" for="q">Search</label>
+              <input id="q" type="search" placeholder="Search: incident, late, calculator…" />
+              <button class="btn" type="button" id="btnFind">Find</button>
+            </div>
+
+            <div class="hint">
+              Press <span class="kbd">/</span> to focus search. Use <span class="kbd">1</span><span class="kbd">2</span><span class="kbd">3</span> to jump.
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const $ = (s) => document.querySelector(s);
+
+    // Local files (commit these to the same folder as index.html)
+    const SLIDES_PDF_FILE = "IB_Examination_Invigilation_Protocols.pdf";
+    const VIDEO_FILE = "IB_Exam_Invigilation.mp4";
+    const REPORT_HTML_FILE = "Invigilation.html";
+
+    function setStamp(){
+      const d = new Date();
+      const opts = { year:"numeric", month:"short", day:"2-digit" };
+      $("#updatedStamp").textContent = d.toLocaleDateString(undefined, opts);
+    }
+
+    async function init(){
+      setStamp();
+
+      // Slides
+      $("#slidesFrame").src = SLIDES_PDF_FILE;
+      $("#slidesOpen").href = SLIDES_PDF_FILE;
+      $("#slidesDownload").href = SLIDES_PDF_FILE;
+
+      // Video
+      $("#videoOpen").href = VIDEO_FILE;
+      $("#videoSource").src = VIDEO_FILE;
+      $("#trainingVideo").load();
+
+      // Report
+      $("#reportOpen").href = REPORT_HTML_FILE;
+      $("#reportFrame").src = REPORT_HTML_FILE;
+
+      // Copy links button
+      $("#btnCopyLinks").addEventListener("click", async () => {
+        const base = location.href.replace(/\/[^\/]*$/, "/");
+        const lines = [
+          `Slides:  ${base}${encodeURI(SLIDES_PDF_FILE)}`,
+          `Video:   ${base}${VIDEO_FILE}`,
+          `Report:  ${base}${REPORT_HTML_FILE}`
+        ];
+        try{
+          await navigator.clipboard.writeText(lines.join("\n"));
+          alert("Links copied to clipboard.");
+        }catch(e){
+          prompt("Copy these links:", lines.join("\n"));
+        }
+      });
+
+      // Search
+      const q = $("#q");
+      const findBtn = $("#btnFind");
+
+      const searchable = [
+        { id:"#slides", text:"slides deck pdf protocols invigilation timing roles incident flowchart" },
+        { id:"#video",  text:"video training invigilation walkthrough procedures" },
+        { id:"#report", text:"condensed report html procedures reminders compliance" }
+      ];
+
+      function doFind(){
+        const term = (q.value || "").trim().toLowerCase();
+        if(!term){
+          alert("Type a keyword to search (e.g., incident, late, calculator).");
+          q.focus();
+          return;
+        }
+        const hit = searchable.find(s => s.text.includes(term));
+        if(hit){
+          document.querySelector(hit.id).scrollIntoView({behavior:"smooth", block:"start"});
+        } else {
+          alert("No match found in section keywords. Try: incident, late, calculator, misconduct, evacuation.");
+        }
+      }
+
+      findBtn.addEventListener("click", doFind);
+      q.addEventListener("keydown", (e) => { if(e.key === "Enter") doFind(); });
+
+      // Global shortcuts: / focuses search; 1-3 jump
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "/" && document.activeElement !== q){
+          e.preventDefault();
+          q.focus();
+        }
+        if(["1","2","3"].includes(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey){
+          const targets = { "1":"#slides", "2":"#video", "3":"#report" };
+          const t = targets[e.key];
+          if(t){
+            e.preventDefault();
+            document.querySelector(t).scrollIntoView({behavior:"smooth", block:"start"});
+          }
+        }
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
