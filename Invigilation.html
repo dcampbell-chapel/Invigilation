@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IB Examination Security & Administrative Compliance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        ib: {
+                            light: '#E6F0F9',
+                            DEFAULT: '#004279', // Classic IB-style Blue
+                            dark: '#00294d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            -webkit-print-color-adjust: exact;
+        }
+        @media print {
+            .no-print { display: none; }
+            body { background-color: white; }
+            .shadow-xl { box-shadow: none; }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Top Navigation / Brand Bar -->
+    <header class="bg-white border-b-4 border-ib sticky top-0 z-50 shadow-sm print:static print:border-none">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:block">
+                    <h1 class="text-xl font-bold text-ib-dark uppercase tracking-wide">Examination Security</h1>
+                    <p class="text-sm text-slate-500 font-medium">Standard Operating Procedure 2025</p>
+                </div>
+            </div>
+            <button onclick="window.print()" class="no-print bg-ib hover:bg-ib-dark text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 text-sm shadow-md">
+                <i class="fa-solid fa-print"></i> Print
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 space-y-8 print:px-0 print:py-0">
+
+        <!-- 1. Mission Statement (Hero) -->
+        <section class="bg-gradient-to-r from-ib-dark to-ib text-white rounded-xl shadow-lg p-8 relative overflow-hidden print:rounded-none print:shadow-none print:text-black print:bg-none print:border-b-2 print:border-ib">
+            <div class="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
+                <i class="fa-solid fa-shield-halved text-9xl"></i>
+            </div>
+            <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Strategic Rationale</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">The Mission</h2>
+                <p class="text-lg leading-relaxed text-blue-50 font-light print:text-black">
+                    Every invigilator is an <span class="font-bold text-white print:text-black">assessment guardian</span>. Our goal is an environment defined by:
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 mt-6">
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/20 print:border-black print:bg-transparent">
+                        <i class="fa-solid fa-lock text-yellow-300 mb-2 print:text-black"></i>
+                        <h3 class="font-bold">Absolute Security</h3>
+                        <p class="text-sm text-blue-100 print:text-slate-600">Secure chain of custody.</p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/20 print:border-black print:bg-transparent">
+                        <i class="fa-solid fa-scale-balanced text-yellow-300 mb-2 print:text-black"></i>
+                        <h3 class="font-bold">Uncompromising Fairness</h3>
+                        <p class="text-sm text-blue-100 print:text-slate-600">Identical conditions for all.</p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/20 print:border-black print:bg-transparent">
+                        <i class="fa-solid fa-ruler-combined text-yellow-300 mb-2 print:text-black"></i>
+                        <h3 class="font-bold">Rigid Standardization</h3>
+                        <p class="text-sm text-blue-100 print:text-slate-600">Exact adherence to 2025 frameworks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Personnel Framework -->
+        <section class="grid md:grid-cols-3 gap-6">
+            <!-- Staffing Metrics -->
+            <div class="md:col-span-1 bg-white rounded-xl shadow-md p-6 border-t-4 border-ib print:shadow-none print:border">
+                <h3 class="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-users text-ib"></i> Staffing Ratios
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <div class="bg-green-100 text-green-700 p-2 rounded shrink-0">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-slate-800">1 : 20</span>
+                            <span class="text-xs text-slate-500">Invigilator to Student Ratio</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="bg-red-100 text-red-700 p-2 rounded shrink-0">
+                            <i class="fa-solid fa-exclamation"></i>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-slate-800">Minimum 2</span>
+                            <span class="text-xs text-slate-500">Invigilators present at ALL times</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="bg-orange-100 text-orange-700 p-2 rounded shrink-0">
+                            <i class="fa-solid fa-ban"></i>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-slate-800">No Subject Teachers</span>
+                            <span class="text-xs text-slate-500">Cannot invigilate own subject.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Invigilator Roles -->
+            <div class="md:col-span-2 bg-white rounded-xl shadow-md p-6 border-t-4 border-ib print:shadow-none print:border">
+                <h3 class="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-id-badge text-ib"></i> Risk Mitigation: Roles
+                </h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                        <h4 class="font-bold text-ib text-sm uppercase">Lead Invigilator</h4>
+                        <p class="text-xs text-slate-600 mt-1">Operational commander. Verbal instructions, timing, and packet integrity.</p>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                        <h4 class="font-bold text-ib text-sm uppercase">Circulating Invigilator</h4>
+                        <p class="text-xs text-slate-600 mt-1">Active patrolling. Eliminates blind spots. Escorts for bathroom breaks.</p>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                        <h4 class="font-bold text-ib text-sm uppercase">Monitoring Invigilator</h4>
+                        <p class="text-xs text-slate-600 mt-1">Seated at rear. Creates psychological deterrent via observation.</p>
+                    </div>
+                    <div class="p-3 bg-yellow-50 rounded border border-yellow-100">
+                        <h4 class="font-bold text-yellow-700 text-sm uppercase flex items-center gap-2">Floating Invigilator <i class="fa-solid fa-triangle-exclamation text-xs"></i></h4>
+                        <p class="text-xs text-slate-600 mt-1">Supports max 3 rooms. <span class="font-bold">Must remain immediately contactable.</span> Break in contact = Breach of compliance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 & 4. Environment & Materials -->
+        <section class="grid md:grid-cols-2 gap-6">
+            
+            <!-- Room Setup Checklist -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden print:shadow-none print:border">
+                <div class="bg-slate-100 px-6 py-4 border-b border-slate-200">
+                    <h3 class="font-bold text-slate-700"><i class="fa-solid fa-chalkboard text-ib mr-2"></i>Physical Room Preparation</h3>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-ruler-horizontal text-ib"></i>
+                            <span>Desk Spacing: Exactly <span class="font-bold">1.5 meters</span> apart.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-arrow-up text-ib"></i>
+                            <span>Directionality: All desks face same direction. No facing tables.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-clock text-ib"></i>
+                            <span>Visibility: Large clock & Start/Finish times clearly displayed.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-eraser text-red-500"></i>
+                            <span class="text-red-700 font-medium">Remove/Cover all instructional displays (maps, periodic tables).</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t border-dashed border-slate-300">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">Mandatory Signage (1 Week Prior)</h4>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded border border-blue-100">Notice to Candidates</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded border border-blue-100">Items Not Permitted</span>
+                            <span class="px-2 py-1 bg-red-50 text-red-700 text-xs rounded border border-red-100">Silence Please</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Materials Dos and Don'ts -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden print:shadow-none print:border">
+                <div class="bg-slate-100 px-6 py-4 border-b border-slate-200">
+                    <h3 class="font-bold text-slate-700"><i class="fa-solid fa-briefcase text-ib mr-2"></i>Material Compliance</h3>
+                </div>
+                <div class="grid grid-cols-2 h-full">
+                    <div class="p-6 border-r border-slate-100">
+                        <h4 class="text-green-700 font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Permitted</h4>
+                        <ul class="text-sm space-y-2 text-slate-600">
+                            <li>Blue or Black Pen</li>
+                            <li>Pencils (2B/B) for graphs</li>
+                            <li>Ruler, Eraser, Protractor</li>
+                            <li>Bilingual Dictionary (non-Lang exams)</li>
+                            <li class="text-xs italic mt-2 text-slate-400">*Calculators only if allowed by paper</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-red-50/50">
+                        <h4 class="text-red-700 font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-times-circle"></i> Prohibited</h4>
+                        <ul class="text-sm space-y-2 text-red-900 font-medium">
+                            <li><span class="underline decoration-red-300">GEL PENS</span> (Cannot Scan)</li>
+                            <li>Correction Fluid/Tape</li>
+                            <li>Smart Watches / Phones</li>
+                            <li>Scratch Paper (Use booklets)</li>
+                            <li>Un-cleared Calculators</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Examination Timeline -->
+        <section class="bg-white rounded-xl shadow-md p-8 border-l-8 border-ib print:shadow-none print:border-l-4">
+            <h3 class="text-xl font-bold text-slate-800 mb-6 border-b pb-2">Standardized Timeline</h3>
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-slate-200"></div>
+
+                <!-- Step 1 -->
+                <div class="relative pl-12 pb-8">
+                    <div class="absolute left-0 top-1 w-8 h-8 bg-ib text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm z-10">1</div>
+                    <h4 class="font-bold text-slate-800">Pre-Arrival & Admittance</h4>
+                    <p class="text-sm text-slate-600">10-min silent admittance. Verify identity. Collect unauthorized materials.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative pl-12 pb-8">
+                    <div class="absolute left-0 top-1 w-8 h-8 bg-ib text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm z-10">2</div>
+                    <h4 class="font-bold text-slate-800">The "Open"</h4>
+                    <p class="text-sm text-slate-600">Open sealed packets <span class="font-bold">in front of students</span>.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative pl-12 pb-8">
+                    <div class="absolute left-0 top-1 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm z-10">3</div>
+                    <h4 class="font-bold text-slate-800">Reading Time (5 Mins)</h4>
+                    <p class="text-sm text-slate-600">Mandatory. <span class="text-red-600 font-bold">NO writing, NO highlighting, NO calculators.</span></p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative pl-12 pb-8">
+                    <div class="absolute left-0 top-1 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm z-10">4</div>
+                    <h4 class="font-bold text-slate-800">The Verbal Start</h4>
+                    <p class="text-sm text-slate-600">Lead Invigilator announces: <em>"Your reading time is over... you may start to write."</em></p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative pl-12">
+                    <div class="absolute left-0 top-1 w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm z-10">5</div>
+                    <h4 class="font-bold text-slate-800">The Conclusion</h4>
+                    <p class="text-sm text-slate-600">Immediate "Stop" command. Collect all scripts <span class="font-bold">before</span> dismissal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6 & 7. Contingency & Shipping -->
+        <div class="grid md:grid-cols-2 gap-6">
+            
+            <!-- Contingency Matrix -->
+            <div class="bg-white rounded-xl shadow-md p-6 print:shadow-none print:border">
+                <h3 class="text-lg font-bold text-slate-700 mb-4">Contingency Matrix</h3>
+                <div class="space-y-4 text-sm">
+                    <div class="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-r">
+                        <div class="font-bold text-yellow-800">Late Arrival (&lt;1 hr)</div>
+                        <div class="text-slate-700">Admit. Allow full time. Report via DP/CP Late Candidate survey.</div>
+                    </div>
+                    <div class="p-3 bg-orange-50 border-l-4 border-orange-500 rounded-r">
+                        <div class="font-bold text-orange-800">Late Arrival (&gt;1 hr)</div>
+                        <div class="text-slate-700">Admit at Coordinator discretion. Contact IB Answers immediately. No grade guaranteed.</div>
+                    </div>
+                    <div class="p-3 bg-red-50 border-l-4 border-red-500 rounded-r">
+                        <div class="font-bold text-red-800">Academic Misconduct</div>
+                        <div class="text-slate-700">Confiscate discreetly. Do NOT expel unless disruptive. Report within 24h.</div>
+                    </div>
+                    <div class="p-3 bg-slate-50 border-l-4 border-slate-500 rounded-r">
+                        <div class="font-bold text-slate-800">Evacuation</div>
+                        <div class="text-slate-700">Stop timing. Record time. Total silence. Resume in alternative venue if possible.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping Protocol -->
+            <div class="bg-white rounded-xl shadow-md p-6 print:shadow-none print:border">
+                <h3 class="text-lg font-bold text-slate-700 mb-4">Post-Exam & Shipping</h3>
+                
+                <div class="mb-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Script Assembly Order</h4>
+                    <ol class="text-sm border rounded bg-slate-50 overflow-hidden">
+                        <li class="px-3 py-2 border-b bg-white">1. Answer Coversheet (Top)</li>
+                        <li class="px-3 py-2 border-b bg-white">2. Structured Paper (if applicable)</li>
+                        <li class="px-3 py-2 border-b bg-white">3. Answer Booklets</li>
+                        <li class="px-3 py-2 bg-white">4. Graph Paper (Bottom)</li>
+                    </ol>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="p-3 bg-blue-100 rounded border border-blue-200 text-center">
+                        <i class="fa-solid fa-envelope text-blue-600 mb-1 text-xl"></i>
+                        <div class="font-bold text-blue-800 text-sm">Blue Envelope</div>
+                        <div class="text-xs text-blue-600">Standard Scripts</div>
+                    </div>
+                    <div class="p-3 bg-yellow-100 rounded border border-yellow-200 text-center">
+                        <i class="fa-solid fa-envelope text-yellow-600 mb-1 text-xl"></i>
+                        <div class="font-bold text-yellow-800 text-sm">Yellow Envelope</div>
+                        <div class="text-xs text-yellow-600">MCQ Sheets Only</div>
+                    </div>
+                </div>
+                
+                <div class="text-xs bg-slate-100 p-3 rounded">
+                    <strong>International Shipping:</strong> Declare nominal value of <span class="font-bold">USD 1</span>. Dispatch within 24 hours.
+                </div>
+            </div>
+        </div>
+
+        <!-- Critical Contacts Footer -->
+        <footer class="bg-slate-800 text-white rounded-xl p-8 print:rounded-none print:bg-slate-200 print:text-black">
+            <h3 class="text-lg font-bold mb-4 border-b border-slate-600 pb-2">Critical Contacts: IB Answers</h3>
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm font-mono">
+                <div>
+                    <span class="block text-slate-400 text-xs uppercase print:text-slate-600">UK</span>
+                    +44 29 2054 7740
+                </div>
+                <div>
+                    <span class="block text-slate-400 text-xs uppercase print:text-slate-600">Switzerland</span>
+                    +41 22 309 2515
+                </div>
+                <div>
+                    <span class="block text-slate-400 text-xs uppercase print:text-slate-600">Singapore</span>
+                    +65 6579 5055
+                </div>
+                <div>
+                    <span class="block text-slate-400 text-xs uppercase print:text-slate-600">USA</span>
+                    +1 301 202 3025
+                </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-600 flex flex-col md:flex-row gap-6 text-sm">
+                <div>
+                    <span class="font-bold text-yellow-400 print:text-yellow-700">Adverse Circumstances:</span> Submit Form D2 via IBIS or email <a href="mailto:adverse@ibo.org" class="underline hover:text-white">adverse@ibo.org</a>
+                </div>
+                <div>
+                    <span class="font-bold text-red-400 print:text-red-700">Academic Misconduct:</span> Report via IBIS within 24 hours.
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
