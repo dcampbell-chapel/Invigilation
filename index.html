@@ -6,100 +6,103 @@
 <title>Chapel School • Invigilator Training Hub</title>
 
 <style>
-  :root {
-    --bg: #0b1220;
-    --panel: #111f38;
-    --panel-dark: #0f1a2e;
-    --text: #eaf0ff;
-    --muted: #b8c4e6;
-    --accent: #2f7dd1;
-    --border: rgba(255,255,255,.12);
+  :root{
+    --bg:#0b1220;
+    --panel:#111f38;
+    --panel-dark:#0f1a2e;
+    --text:#eaf0ff;
+    --muted:#b8c4e6;
+    --accent:#2f7dd1;
+    --border:rgba(255,255,255,.12);
   }
 
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    height: 100vh;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    display: flex;
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    height:100vh;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    display:flex;
   }
 
   /* Sidebar */
-  nav {
-    width: 260px;
-    background: linear-gradient(180deg, var(--panel), var(--panel-dark));
-    border-right: 1px solid var(--border);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  nav{
+    width:240px;
+    background:linear-gradient(180deg,var(--panel),var(--panel-dark));
+    border-right:1px solid var(--border);
+    padding:18px 14px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
   }
 
-  nav h1 {
-    font-size: 16px;
-    margin: 0 0 12px;
-    font-weight: 600;
+  nav h1{
+    font-size:15px;
+    margin:0 0 6px;
+    font-weight:650;
+    letter-spacing:.2px;
   }
 
-  nav button {
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    color: var(--text);
-    text-align: left;
-    font-size: 14px;
-    cursor: pointer;
+  nav button{
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px 12px;
+    color:var(--text);
+    text-align:left;
+    font-size:14px;
+    font-weight:650;
+    cursor:pointer;
+    transition:background .12s ease,border-color .12s ease;
+  }
+  nav button:hover{ background:rgba(255,255,255,.07); }
+  nav button.active{
+    background:rgba(47,125,209,.18);
+    border-color:var(--accent);
   }
 
-  nav button:hover,
-  nav button.active {
-    background: rgba(47,125,209,.2);
-    border-color: var(--accent);
+  nav small{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.35;
+    margin-top:6px;
   }
 
-  nav small {
-    color: var(--muted);
-    font-size: 12px;
+  /* Main */
+  main{
+    flex:1;
+    background:#070b14;
+    display:flex;
+    flex-direction:column;
   }
 
-  /* Main content */
-  main {
-    flex: 1;
-    background: #070b14;
-    display: flex;
-    flex-direction: column;
+  header{
+    padding:14px 18px;
+    border-bottom:1px solid var(--border);
+    background:rgba(11,18,32,.8);
+    font-size:14px;
+    font-weight:600;
   }
 
-  header {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(11,18,32,.8);
-    font-size: 15px;
-    font-weight: 500;
+  iframe{
+    flex:1;
+    width:100%;
+    border:none;
+    background:#000;
   }
 
-  iframe {
-    flex: 1;
-    width: 100%;
-    border: none;
-    background: #000;
+  .fallback{
+    padding:12px 18px;
+    font-size:13px;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+    background:#0b1220;
   }
-
-  .fallback {
-    padding: 14px;
-    font-size: 13px;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
-    background: #0b1220;
-  }
-
-  .fallback a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
+  .fallback a{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:700;
   }
 </style>
 </head>
@@ -109,80 +112,75 @@
 <nav>
   <h1>Invigilator Training</h1>
 
-  <button class="active" onclick="loadSlides(this)">
-    Slide Deck (PDF)
-  </button>
+  <!-- Order: Report, Video, Slides, Calculator Details -->
+  <button class="active" onclick="loadReport(this)">Report</button>
+  <button onclick="loadVideo(this)">Video</button>
+  <button onclick="loadSlides(this)">Slides</button>
+  <button onclick="loadCalculator(this)">Calculator Details</button>
 
-  <button onclick="loadVideo(this)">
-    Training Video
-  </button>
-
-  <button onclick="loadReport(this)">
-    Condensed Report
-  </button>
-
-  <small>
-    Use this panel to switch resources during training.
-  </small>
+  <small>Click to switch what appears in the main window.</small>
 </nav>
 
 <main>
-  <header id="title">
-    Slide Deck – Invigilation Protocols
-  </header>
+  <header id="title">Report</header>
 
-  <iframe
-    id="viewer"
-    src="IB_Examination_Invigilation_Protocols.pdf"
-    title="Invigilation Slides">
-  </iframe>
+  <!-- Default load = Report -->
+  <iframe id="viewer" src="Invigilation.html" title="Invigilation Report"></iframe>
 
   <div class="fallback" id="fallback">
-    If this content does not load,
-    <a href="IB_Examination_Invigilation_Protocols.pdf" target="_blank">
-      open it in a new tab
-    </a>.
+    If this page does not load,
+    <a href="Invigilation.html" target="_blank" rel="noopener">open it in a new tab</a>.
   </div>
 </main>
 
 <script>
   const viewer = document.getElementById("viewer");
-  const title = document.getElementById("title");
-  const fallback = document.getElementById("fallback");
+  const title  = document.getElementById("title");
+  const fb     = document.getElementById("fallback");
 
-  function setActive(btn) {
+  // Local files (must match your repo filenames exactly)
+  const REPORT_FILE     = "Invigilation.html";
+  const SLIDES_PDF      = "IB_Examination_Invigilation_Protocols.pdf";
+  const CALC_GUIDE_PDF  = "Calculator_Guidance.pdf";
+
+  // YouTube video
+  const YT_ID = "7OCQ6IsaqCQ";
+
+  function setActive(btn){
     document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
   }
 
-  function loadSlides(btn) {
+  function loadReport(btn){
     setActive(btn);
-    title.textContent = "Slide Deck – Invigilation Protocols";
-    viewer.src = "IB_Examination_Invigilation_Protocols.pdf";
-    fallback.innerHTML = `
-      If this PDF does not load,
-      <a href="IB_Examination_Invigilation_Protocols.pdf" target="_blank">open it in a new tab</a>.
-    `;
+    title.textContent = "Report";
+    viewer.src = REPORT_FILE;
+    fb.innerHTML = `If this page does not load,
+      <a href="${REPORT_FILE}" target="_blank" rel="noopener">open it in a new tab</a>.`;
   }
 
-  function loadVideo(btn) {
+  function loadVideo(btn){
     setActive(btn);
-    title.textContent = "Training Video – Invigilation Procedures";
-    viewer.src = "https://www.youtube.com/embed/7OCQ6IsaqCQ?modestbranding=1&rel=0";
-    fallback.innerHTML = `
-      If the video does not play,
-      <a href="https://youtu.be/7OCQ6IsaqCQ" target="_blank">open it on YouTube</a>.
-    `;
+    title.textContent = "Video";
+    viewer.src = `https://www.youtube.com/embed/${YT_ID}?modestbranding=1&rel=0`;
+    fb.innerHTML = `If the video does not play,
+      <a href="https://youtu.be/${YT_ID}" target="_blank" rel="noopener">open it on YouTube</a>.`;
   }
 
-  function loadReport(btn) {
+  function loadSlides(btn){
     setActive(btn);
-    title.textContent = "Condensed Invigilation Report";
-    viewer.src = "Invigilation.html";
-    fallback.innerHTML = `
-      If this page does not load,
-      <a href="Invigilation.html" target="_blank">open it in a new tab</a>.
-    `;
+    title.textContent = "Slides";
+    viewer.src = SLIDES_PDF;
+    fb.innerHTML = `If this PDF does not load,
+      <a href="${SLIDES_PDF}" target="_blank" rel="noopener">open it in a new tab</a>.`;
+  }
+
+  function loadCalculator(btn){
+    setActive(btn);
+    title.textContent = "Calculator Details";
+    viewer.src = CALC_GUIDE_PDF;
+    fb.innerHTML = `If this PDF does not load,
+      <a href="${CALC_GUIDE_PDF}" target="_blank" rel="noopener">open it in a new tab</a>.`;
   }
 </script>
 
