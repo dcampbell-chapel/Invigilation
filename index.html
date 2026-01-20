@@ -112,20 +112,21 @@
 <nav>
   <h1>Invigilator Training</h1>
 
-  <!-- Order: Report, Video, Slides, Calculator Details -->
-  <button class="active" onclick="loadReport(this)">Report</button>
+  <!-- Order: Overview, Video, Slides, Calculator Details, Invigilator Script -->
+  <button class="active" onclick="loadOverview(this)">Overview</button>
   <button onclick="loadVideo(this)">Video</button>
   <button onclick="loadSlides(this)">Slides</button>
   <button onclick="loadCalculator(this)">Calculator Details</button>
+  <button onclick="loadScript(this)">Invigilator Script</button>
 
-  <small>Click to switch what appears in the main window.</small>
+  <small>Select a resource to display it in the main window.</small>
 </nav>
 
 <main>
-  <header id="title">Report</header>
+  <header id="title">Overview</header>
 
-  <!-- Default load = Report -->
-  <iframe id="viewer" src="Invigilation.html" title="Invigilation Report"></iframe>
+  <!-- Default load = Overview -->
+  <iframe id="viewer" src="Invigilation.html" title="Invigilation Overview"></iframe>
 
   <div class="fallback" id="fallback">
     If this page does not load,
@@ -138,10 +139,11 @@
   const title  = document.getElementById("title");
   const fb     = document.getElementById("fallback");
 
-  // Local files (must match your repo filenames exactly)
-  const REPORT_FILE     = "Invigilation.html";
+  // Local files (must match repo filenames exactly)
+  const OVERVIEW_FILE   = "Invigilation.html";
   const SLIDES_PDF      = "IB_Examination_Invigilation_Protocols.pdf";
   const CALC_GUIDE_PDF  = "Calculator_Guidance.pdf";
+  const SCRIPT_PDF      = "Invigilator_Script.pdf";
 
   // YouTube video
   const YT_ID = "7OCQ6IsaqCQ";
@@ -151,12 +153,12 @@
     btn.classList.add("active");
   }
 
-  function loadReport(btn){
+  function loadOverview(btn){
     setActive(btn);
-    title.textContent = "Report";
-    viewer.src = REPORT_FILE;
+    title.textContent = "Overview";
+    viewer.src = OVERVIEW_FILE;
     fb.innerHTML = `If this page does not load,
-      <a href="${REPORT_FILE}" target="_blank" rel="noopener">open it in a new tab</a>.`;
+      <a href="${OVERVIEW_FILE}" target="_blank" rel="noopener">open it in a new tab</a>.`;
   }
 
   function loadVideo(btn){
@@ -181,6 +183,14 @@
     viewer.src = CALC_GUIDE_PDF;
     fb.innerHTML = `If this PDF does not load,
       <a href="${CALC_GUIDE_PDF}" target="_blank" rel="noopener">open it in a new tab</a>.`;
+  }
+
+  function loadScript(btn){
+    setActive(btn);
+    title.textContent = "Invigilator Script";
+    viewer.src = SCRIPT_PDF;
+    fb.innerHTML = `If this PDF does not load,
+      <a href="${SCRIPT_PDF}" target="_blank" rel="noopener">open it in a new tab</a>.`;
   }
 </script>
 
