@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Chapel School • Invigilator Training Hub</title>
-  <meta name="description" content="A single hub for Chapel School invigilator training resources: slides, video, and condensed report." />
+  <title>Chapel School • Invigilator Training </title>
+  <meta name="description" content="A single hub for Chapel School invigilator training resources: slides (PDF), YouTube video, and condensed report." />
 
   <style>
     :root{
@@ -80,6 +80,7 @@
       transition:.15s transform, .15s background, .15s border;
       display:inline-flex; align-items:center; gap:10px;
       font-weight:650; letter-spacing:.1px; font-size:13.5px;
+      text-decoration:none;
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.18)}
     .btn.primary{
@@ -185,8 +186,12 @@
       background: rgba(0,0,0,.18);
       overflow:hidden;
     }
-    .embed iframe{width:100%; height:540px; border:0; background:#0b1220;}
-    video{width:100%; max-height:540px; background:#000; display:block;}
+    .embed iframe{
+      width:100%;
+      height:540px;
+      border:0;
+      background:#0b1220;
+    }
 
     .tools{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:12px;}
     .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.5; font-size:13.5px;}
@@ -203,6 +208,15 @@
       flex-wrap:wrap;
     }
     .sr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+
+    @media print{
+      .topbar, .navbox, #settings .tools, .btn, .pill { display:none !important; }
+      body{ background:#fff; color:#000; }
+      .card{ box-shadow:none; border:1px solid #ddd; background:#fff; }
+      .card .hd{ border-bottom:1px solid #eee; }
+      .embed{ border:1px solid #ddd; }
+      .embed iframe{ height:420px; }
+    }
   </style>
 </head>
 
@@ -219,7 +233,7 @@
           </div>
           <div>
             <h1>Chapel School • Invigilator Training Hub</h1>
-            <p>Slide Deck (PDF) • Training Video • Condensed Report</p>
+            <p>Slide Deck (PDF) • Training Video (YouTube) • Condensed Report</p>
           </div>
         </div>
 
@@ -237,9 +251,8 @@
     <section class="hero">
       <h2>Everything teachers need, in one place</h2>
       <p>
-        Use this hub during invigilator training to quickly access the core resources:
-        the slide deck (PDF), the training video, and the condensed report page. Each resource is separated
-        into its own section with quick navigation and search.
+        Use this hub during invigilator training to access the slide deck, the training video, and the condensed report page.
+        Each resource is separated into its own section with quick navigation and search.
       </p>
     </section>
 
@@ -256,9 +269,9 @@
           </div>
           <div class="bd">
             <ul class="list">
-              <li><strong>Slide deck (PDF):</strong> <span style="font-family:var(--mono)">IB_Examination_Invigilation_Protocols.pdf</span> :contentReference[oaicite:3]{index=3}</li>
-              <li><strong>Video:</strong> <span style="font-family:var(--mono)">IB_Exam_Invigilation.mp4</span></li>
-              <li><strong>Condensed report:</strong> <span style="font-family:var(--mono)">Invigilation.html</span> :contentReference[oaicite:4]{index=4}</li>
+              <li><strong>Slide deck (PDF):</strong> <span style="font-family:var(--mono)">IB_Examination_Invigilation_Protocols.pdf</span></li>
+              <li><strong>Condensed report:</strong> <span style="font-family:var(--mono)">Invigilation.html</span></li>
+              <li><strong>Training video:</strong> Hosted on YouTube (unlisted) — no file upload to GitHub required.</li>
             </ul>
 
             <div class="tools">
@@ -267,7 +280,7 @@
             </div>
           </div>
           <div class="foot">
-            <span>Static site: no logins, no tracking. Designed for quick navigation during training.</span>
+            <span>Static site: no logins required for slides/report. Video streams from YouTube.</span>
             <span class="mini">Last updated: <span id="updatedStamp"></span></span>
           </div>
         </section>
@@ -290,32 +303,35 @@
               <iframe id="slidesFrame" src="" title="Invigilation Protocols Slide Deck (PDF)"></iframe>
             </div>
             <div class="hint" style="margin-top:10px;">
-              File: <span style="font-family:var(--mono)">IB_Examination_Invigilation_Protocols.pdf</span> :contentReference[oaicite:5]{index=5}
+              File: <span style="font-family:var(--mono)">IB_Examination_Invigilation_Protocols.pdf</span>
             </div>
           </div>
         </section>
 
-        <!-- VIDEO -->
+        <!-- VIDEO (YOUTUBE) -->
         <section class="card" id="video" style="margin-top:16px;">
           <div class="hd">
             <div>
               <h3>2) Training video</h3>
-              <div class="sub">Play this during the session or assign it as a refresher.</div>
+              <div class="sub">Embedded from YouTube for reliable playback during training.</div>
             </div>
             <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-              <span class="tag ok"><span class="dot"></span> MP4</span>
+              <span class="tag ok"><span class="dot"></span> YouTube</span>
               <a class="btn small" id="videoOpen" href="#" target="_blank" rel="noopener">Open in new tab</a>
             </div>
           </div>
           <div class="bd">
             <div class="embed">
-              <video id="trainingVideo" controls preload="metadata">
-                <source id="videoSource" src="" type="video/mp4" />
-                Sorry — your browser can’t play this video. Use “Open in new tab” above.
-              </video>
+              <iframe
+                id="videoFrame"
+                src=""
+                title="Invigilator Training Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
             <div class="hint" style="margin-top:10px;">
-              If the video doesn’t load on GitHub Pages, confirm the file is committed (not only present locally).
+              If your school blocks YouTube, keep the “Open in new tab” link as a backup for personal devices/offsite viewing.
             </div>
           </div>
         </section>
@@ -337,7 +353,7 @@
               <iframe id="reportFrame" src="" title="Condensed Invigilation Report"></iframe>
             </div>
             <div class="hint" style="margin-top:10px;">
-              This embeds your existing <span style="font-family:var(--mono)">Invigilation.html</span> page. :contentReference[oaicite:6]{index=6}
+              Embedded from <span style="font-family:var(--mono)">Invigilation.html</span>.
             </div>
           </div>
         </section>
@@ -369,7 +385,7 @@
                 <span class="right"><span class="mini">1</span><span class="arrow">→</span></span>
               </a>
               <a href="#video" data-key="2">
-                <span class="label"><strong>Video</strong><span>Play in-page</span></span>
+                <span class="label"><strong>Video</strong><span>YouTube embed</span></span>
                 <span class="right"><span class="mini">2</span><span class="arrow">→</span></span>
               </a>
               <a href="#report" data-key="3">
@@ -398,8 +414,14 @@
 
     // Local files (commit these to the same folder as index.html)
     const SLIDES_PDF_FILE = "IB_Examination_Invigilation_Protocols.pdf";
-    const VIDEO_FILE = "IB_Exam_Invigilation.mp4";
     const REPORT_HTML_FILE = "Invigilation.html";
+
+    // YouTube video
+    const YOUTUBE_VIDEO_ID = "7OCQ6IsaqCQ";
+    const YOUTUBE_WATCH_URL = "https://youtu.be/" + YOUTUBE_VIDEO_ID;
+    // modestbranding reduces some UI chrome; rel=0 avoids unrelated recommendations at end (mostly)
+    const YOUTUBE_EMBED_URL =
+      "https://www.youtube.com/embed/" + YOUTUBE_VIDEO_ID + "?modestbranding=1&rel=0";
 
     function setStamp(){
       const d = new Date();
@@ -416,9 +438,8 @@
       $("#slidesDownload").href = SLIDES_PDF_FILE;
 
       // Video
-      $("#videoOpen").href = VIDEO_FILE;
-      $("#videoSource").src = VIDEO_FILE;
-      $("#trainingVideo").load();
+      $("#videoOpen").href = YOUTUBE_WATCH_URL;
+      $("#videoFrame").src = YOUTUBE_EMBED_URL;
 
       // Report
       $("#reportOpen").href = REPORT_HTML_FILE;
@@ -429,7 +450,7 @@
         const base = location.href.replace(/\/[^\/]*$/, "/");
         const lines = [
           `Slides:  ${base}${encodeURI(SLIDES_PDF_FILE)}`,
-          `Video:   ${base}${VIDEO_FILE}`,
+          `Video:   ${YOUTUBE_WATCH_URL}`,
           `Report:  ${base}${REPORT_HTML_FILE}`
         ];
         try{
@@ -440,13 +461,13 @@
         }
       });
 
-      // Search
+      // Search (lightweight keyword-to-section jump)
       const q = $("#q");
       const findBtn = $("#btnFind");
 
       const searchable = [
         { id:"#slides", text:"slides deck pdf protocols invigilation timing roles incident flowchart" },
-        { id:"#video",  text:"video training invigilation walkthrough procedures" },
+        { id:"#video",  text:"video youtube training invigilation walkthrough procedures" },
         { id:"#report", text:"condensed report html procedures reminders compliance" }
       ];
 
